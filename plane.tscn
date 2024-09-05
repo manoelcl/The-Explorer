@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://doevq5njs8kup"]
+
+[ext_resource type="Script" path="res://plane.gd" id="1_f1y17"]
+[ext_resource type="PackedScene" uid="uid://cbspqogg0pwgc" path="res://plane.blend" id="1_ufcqj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yh8nq"]
+size = Vector3(1, 2, 3)
+
+[node name="Plane" type="VehicleBody3D"]
+mass = 400.0
+script = ExtResource("1_f1y17")
+
+[node name="plane" parent="." instance=ExtResource("1_ufcqj")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+spring_length = 8.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_yh8nq")
